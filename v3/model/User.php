@@ -60,4 +60,26 @@ Class User
         return $update;
     }
 
+    public function add($firstname, $lastname, $address) {
+        $bdd = new Bdd();
+        $date = date("Y-m-d");
+        $addUser = $bdd->getBdd()->prepare("INSERT INTO salaries (firstName, lastName, address, dateBegin, dateEnd)
+         VALUES (:firstname, :lastname, :address, :dateBegin, :dateEnd)");
+        $addUser->bindParam(":firstname", $firstname);
+        $addUser->bindParam(":lastname", $lastname);
+        $addUser->bindParam(":address", $address);
+        $addUser->bindParam(":dateBegin", $date);
+        $addUser->bindParam(":dateEnd", "0000-00-00");
+        $addUser->execute();
+        if ($addUser) {
+            $id = $bdd->lastInsertId();
+            $addConge = $bdd->prepare("INSERT INTO conges (salaries_id, acquis, pris) VALUES (:id, 0, 0)");
+            $addConge->bindParam(":id", $id);
+            $addConge->execute();
+            return $addConge;
+        } else {
+            return false;
+        }
+    }
+
 }
