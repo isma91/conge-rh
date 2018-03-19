@@ -50,5 +50,13 @@ Class Bdd
         return $result;
     }
 
+    public function getAllById($id) {
+        $data = self::getBdd()->prepare("SELECT id, firstName, lastName, address, dateBegin, conges.acquis, conges.pris FROM salaries INNER JOIN conges ON conges.salaries_id = salaries.id WHERE salaries.id = :id");
+        $data->bindParam(":id", $id);
+        $data->execute();
+        $result = $data->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
+    }
+    
 
 }
