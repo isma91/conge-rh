@@ -71,6 +71,17 @@ Class Bdd
         return $update;
     }
     
-    
+    public function updateCongePris($id, $conge) {
+        $id = (int)$id;
+        $conge = (int)$conge;
+        if (!is_int($id) && !is_int($conge)) {
+            return false;
+        }
+        $update = self::getBdd()->prepare("UPDATE conges SET pris = :pris WHERE salaries_id = :id");
+        $update->bindParam(":pris", $conge);
+        $update->bindParam(":id", $id);
+        $update->execute();
+        return $update;
+    }
 
 }
