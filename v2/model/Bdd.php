@@ -58,5 +58,19 @@ Class Bdd
         return $result;
     }
     
+    public function updateCongeAcquis($id, $conge) {
+        $id = (int)$id;
+        $conge = (int)$conge;
+        if (!is_int($id) && !is_int($conge)) {
+            return false;
+        }
+        $update = self::getBdd()->prepare("UPDATE conges SET acquis = :acquis WHERE salaries_id = :id");
+        $update->bindParam(":acquis", $conge);
+        $update->bindParam(":id", $id);
+        $update->execute();
+        return $update;
+    }
+    
+    
 
 }
