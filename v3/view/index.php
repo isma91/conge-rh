@@ -22,6 +22,16 @@ $data = $user->getData();
     </div>
 </div>
 <div class="container">
+    <nav>
+        <div class="nav-wrapper">
+            <ul>
+                <li class="active"><a href="index.php">Home</a></li>
+                <li><a href="register.php">Add User</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="container">
     <table class="highlight centered">
         <thead>
             <tr>
