@@ -1,14 +1,14 @@
 <?php
 require_once("../autoload.php");
-use model\Bdd;
-$bdd = new Bdd();
-$data = $bdd->getAllById($_GET["id"]);
+use model\User;
+$user = new User();
+$data = $user->getAllById($_GET["id"]);
 if (empty($data)) {
     header('Location: index.php');
 }
 if (isset($_POST["updateAcquis"])) {
-    $update = $bdd->updateCongeAcquis($_POST['id'], $_POST['acquis']);
-    $data = $bdd->getAllById($_POST["id"]);
+    $update = $user->updateCongeAcquis($_POST['id'], $_POST['acquis']);
+    $data = $user->getAllById($_POST["id"]);
     if ($update) {
         $message = '<div class="success"><p>Congé modifier avec succès !!</p></div>';
     } else {
@@ -16,8 +16,8 @@ if (isset($_POST["updateAcquis"])) {
     }
 }
 if (isset($_POST["updatePris"])) {
-    $update = $bdd->updateCongePris($_POST['id'], $_POST['pris']);
-    $data = $bdd->getAllById($_POST["id"]);
+    $update = $user->updateCongePris($_POST['id'], $_POST['pris']);
+    $data = $user->getAllById($_POST["id"]);
     if ($update) {
         $message = '<div class="success"><p>Congé modifier avec succès !!</p></div>';
     } else {

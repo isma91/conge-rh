@@ -1,8 +1,8 @@
 <?php
 require_once("../autoload.php");
-use model\Bdd;
-$bdd = new Bdd();
-$data = $bdd->getData();
+use model\User;
+$user = new User();
+$data = $user->getData();
 ?>
 <!DOCTYPE html>
 <html>
