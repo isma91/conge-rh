@@ -11,7 +11,6 @@
 * @author   isma91
 * @license  http://opensource.org/licenses/gpl-license.php GNU Public License
 */
-namespace model;
 Class Bdd
 {
     private $_bdd;
@@ -41,6 +40,13 @@ Class Bdd
     public function getBdd () 
     {
         return $this->_bdd;
+    }
+
+    public function getData() {
+        $data = self::getBdd()->prepare("SELECT firstName, lastName, address, dateBegin, conges.acquis, conges.pris FROM salaries INNER JOIN conges ON conges.salaries_id = salaries.id");
+        $data->execute();
+        $result = $data->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
     }
 
 }
