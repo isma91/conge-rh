@@ -15,7 +15,15 @@ if (isset($_POST["updateAcquis"])) {
         $message = '<div class="failed"><p>Un problème est survenue !!</p></div>';
     }
 }
-
+if (isset($_POST["updatePris"])) {
+    $update = $bdd->updateCongePris($_POST['id'], $_POST['pris']);
+    $data = $bdd->getAllById($_POST["id"]);
+    if ($update) {
+        $message = '<div class="success"><p>Congé modifier avec succès !!</p></div>';
+    } else {
+        $message = '<div class="failed"><p>Un problème est survenue !!</p></div>';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -84,6 +92,21 @@ if (isset($_POST["updateAcquis"])) {
         </div>
     </form>
 </div>
-
+<div class="container">
+    <form action="#" method="POST" class="row">
+        <div class="row">
+            <div class="col s12">
+            Nouveau congé pris:
+                <div class="input-field inline">
+                    <input name="pris" type="number">
+                </div>
+                <input type="hidden" name="id" value="<?php echo $data[0]['id']; ?>" />
+            </div>
+        </div>
+        <div class="row center">
+            <button class="btn waves-effect waves-light" name="updatePris" type="submit">Update Congé Pris</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>
