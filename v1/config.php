@@ -1,7 +1,7 @@
 <?php
 return [
     'host'        => 'localhost',
-    'dbname'      => 'conge_rh',
+    'dbname'      => '',
     'user'        => '',
     'password'    => ''
 ];
