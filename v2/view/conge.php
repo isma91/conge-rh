@@ -6,6 +6,15 @@ $data = $bdd->getAllById($_GET["id"]);
 if (empty($data)) {
     header('Location: index.php');
 }
+if (isset($_POST["updateAcquis"])) {
+    $update = $bdd->updateCongeAcquis($_POST['id'], $_POST['acquis']);
+    $data = $bdd->getAllById($_POST["id"]);
+    if ($update) {
+        $message = '<div class="success"><p>Congé modifier avec succès !!</p></div>';
+    } else {
+        $message = '<div class="failed"><p>Un problème est survenue !!</p></div>';
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -28,6 +37,7 @@ if (empty($data)) {
             <a class="btn waves-effect waves-light" href="index.php">Home</a>
         </div>
 </div>
+<?php if (isset($message)) { echo $message; } ?>
 <div class="container">
     <table class="highlight centered">
         <thead>
@@ -57,6 +67,22 @@ if (empty($data)) {
         ?>
         </tbody>
     </table>
+</div>
+<div class="container">
+    <form action="#" method="POST" class="row">
+        <div class="row">
+            <div class="col s12">
+            Nouveau congé acquis:
+                <div class="input-field inline">
+                    <input name="acquis" type="number">
+                </div>
+                <input type="hidden" name="id" value="<?php echo $data[0]['id']; ?>" />
+            </div>
+        </div>
+        <div class="row center">
+            <button class="btn waves-effect waves-light" name="updateAcquis" type="submit">Update Congé Acquis</button>
+        </div>
+    </form>
 </div>
 
 </body>
