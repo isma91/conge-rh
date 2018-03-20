@@ -11,7 +11,6 @@ namespace controller;
  * @author   isma91 <ismaydogmus@gmail.com>
  * @license  http://opensource.org/licenses/gpl-license.php GNU Public License
  */
-use model\Bdd;
 use model\User;
 /**
  * Class UserController
