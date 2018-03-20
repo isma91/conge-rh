@@ -3,10 +3,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var error = document.getElementById("error");
     var success = document.getElementById("success");
     var users = document.getElementById("users");
+    var checkbox = document.getElementById("switch");
     var tableUser = "";
     var user = "";
+    var deletedUser = false;
     
-    function getData() {
+    function getData(deletedUser = false) {
         xhr.open('POST', '../public_api/index.php');
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send('action=getData');
@@ -31,6 +33,20 @@ document.addEventListener("DOMContentLoaded", function (event) {
                                 tableUser = tableUser + "<td></td>";
                             }
                             tableUser = tableUser + "<td><button class='btn waves-effect waves-light delete' name='deleteUser' id='" + user.id + "' >Supprimer</button></td></tr>";
+                        }
+                        if (deletedUser === true && user.active == 0) {
+                            tableUser = tableUser + "<tr class='delete'><td>" + user.firstName + "</td>";
+                            tableUser = tableUser + "<td>" + user.lastName + "</td>";
+                            tableUser = tableUser + "<td>" + user.address + "</td>";
+                            tableUser = tableUser + "<td>" + user.address + "</td>";
+                            tableUser = tableUser + "<td>" + user.acquis + "</td>";
+                            tableUser = tableUser + "<td>" + user.pris + "</td>";
+                            if (user.newcomer == 0) {
+                                tableUser = tableUser + "<td><a href='conge.php?id=" + user.id + "' >Modifier</td>";
+                            } else {
+                                tableUser = tableUser + "<td></td>";
+                            }
+                            tableUser = tableUser + "<td>Déjà Supprimer !!</td></tr>";
                         }
                     }
                     users.innerHTML = tableUser;
@@ -68,6 +84,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var name = event.srcElement.name;
         if (name === "deleteUser") {
             deleteUser(event.srcElement.id);
+        }
+        if (name === "switch") {
+            if (event.srcElement.checked) {
+                getData(true);
+            } else {
+                getData();
+            }
         }
     });
 });
