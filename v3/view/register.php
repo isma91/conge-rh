@@ -1,8 +1,8 @@
 <?php
 require_once("../autoload.php");
-use controller\UserControler;
+use controller\UserController;
 if (isset($_POST["createUser"])) {
-    $user = new UserControler();
+    $user = new UserController();
     $add = $user->add($_POST['firstname'], $_POST["lastname"], $_POST["address"]);
     if ($add["error"] !== "") {
         $message = '<div class="failed"><p>' . $add["error"] . '</p></div>';
