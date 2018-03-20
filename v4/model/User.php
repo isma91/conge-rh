@@ -17,7 +17,7 @@ Class User
 
     public function getData() {
         $bdd = new Bdd();
-        $data = $bdd->getBdd()->prepare("SELECT id, firstName, lastName, address, dateBegin, conges.acquis, conges.pris, newcomer FROM salaries INNER JOIN conges ON conges.salaries_id = salaries.id");
+        $data = $bdd->getBdd()->prepare("SELECT id, firstName, lastName, address, dateBegin, conges.acquis, conges.pris, newcomer, active FROM salaries INNER JOIN conges ON conges.salaries_id = salaries.id");
         $data->execute();
         $result = $data->fetchAll(\PDO::FETCH_ASSOC);
         return $result;
@@ -25,7 +25,7 @@ Class User
 
     public function getAllById($id) {
         $bdd = new Bdd();
-        $data = $bdd->getBdd()->prepare("SELECT id, firstName, lastName, address, dateBegin, conges.acquis, conges.pris FROM salaries INNER JOIN conges ON conges.salaries_id = salaries.id WHERE salaries.id = :id AND salaries.newcomer = 0");
+        $data = $bdd->getBdd()->prepare("SELECT id, firstName, lastName, address, dateBegin, conges.acquis, conges.pris FROM salaries INNER JOIN conges ON conges.salaries_id = salaries.id WHERE salaries.id = :id AND salaries.newcomer = 0 AND salaries.active = 1");
         $data->bindParam(":id", $id);
         $data->execute();
         $result = $data->fetchAll(\PDO::FETCH_ASSOC);
