@@ -21,6 +21,7 @@ if (isset($_POST["createUser"])) {
     <link media="all" type="text/css" rel="stylesheet" href="../media/css/materialize.min.css" />
     <link media="all" type="text/css" rel="stylesheet" href="../media/css/google_material_icons.css" />
     <link media="all" type="text/css" rel="stylesheet" href="../media/css/style.css" />
+    <script src="../media/js/register.js"></script>
 </head>
 <body>
 <div class="container">
@@ -38,6 +39,8 @@ if (isset($_POST["createUser"])) {
         </div>
     </nav>
 </div>
+<div class="failed" id="error"></div>
+<div class="success" id="success"></div>
 <?php if (isset($message)) { echo $message; } ?>
 <div class="container">
     <form action="#" method="POST" class="row">
