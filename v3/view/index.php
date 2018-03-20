@@ -55,7 +55,7 @@ $data = $user->getData();
                 <td><?php echo $array["dateBegin"]; ?></td>
                 <td><?php echo $array["acquis"]; ?></td>
                 <td><?php echo $array["pris"]; ?></td>
-                <td><a href="conge.php?id=<?php echo $array['id']; ?>">Modifier</a></td>
+                <td><?php if ($array["newcomer"] == 0) { ?><a href="conge.php?id=<?php echo $array['id']; ?>">Modifier</a> <?php } ?></td>
                 </tr>
         <?php
             }
