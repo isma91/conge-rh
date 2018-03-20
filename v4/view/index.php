@@ -26,7 +26,8 @@
         </div>
     </nav>
 </div>
-<div class="failed"><p id="error"></p></div>
+<div class="failed" id="error"></div>
+<div class="success" id="success"></div>
 <div class="container">
     <table class="highlight centered">
         <thead>
