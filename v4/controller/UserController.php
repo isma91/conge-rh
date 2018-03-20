@@ -33,6 +33,36 @@ class UserController
             self::sendJson("Une erreur est survenue lors de la recuperation des utilisateur !!", "");
         }
     }
+    
+    public function getAllById($id) {
+        $user = new User();
+        $data = $user->getAllById($id);
+        if (!empty($data)) {
+            self::sendJson("", $data);
+        } else {
+            self::sendJson("Une erreur est survenue lors de la recuperation de l'utilisateur !!", "");
+        }
+    }
+    
+    public function updateAcquis($conge, $id) {
+        $user = new User();
+        $data = $user->updateCongeAcquis($id, $conge);
+        if (!empty($data)) {
+            self::sendJson("", "");
+        } else {
+            self::sendJson("Une erreur est survenue lors du changement du conge acquis !!", "");
+        }
+    }
+    
+    public function updatePris($conge, $id) {
+        $user = new User();
+        $data = $user->updateCongePris($id, $conge);
+        if (!empty($data)) {
+            self::sendJson("", "");
+        } else {
+            self::sendJson("Une erreur est survenue lors du changement du conge pris !!", "");
+        }
+    }
 
     public function add($firstname, $lastname, $address) {
         $errField = array();
