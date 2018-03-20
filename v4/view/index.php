@@ -47,6 +47,7 @@ $data = $user->getData();
         <tbody>
         <?php
             foreach ($data as $array) {
+                if ($array["active"] == 1) {
         ?>
                 <tr>
                 <td><?php echo $array["firstName"]; ?></td>
@@ -58,6 +59,7 @@ $data = $user->getData();
                 <td><?php if ($array["newcomer"] == 0) { ?><a href="conge.php?id=<?php echo $array['id']; ?>">Modifier</a> <?php } ?></td>
                 </tr>
         <?php
+                }
             }
         ?>
         </tbody>
