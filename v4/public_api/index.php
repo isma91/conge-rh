@@ -28,4 +28,7 @@ switch ($_POST["action"]) {
     case 'updatePris':
     $data = $user->updatePris($_POST["pris"], $_POST["id"]);
     break;
+    case 'createUser':
+    $data = $user->createUser($_POST["firstname"], $_POST["lastname"], $_POST["address"]);
+    break;
 }
