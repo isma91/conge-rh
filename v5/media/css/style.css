@@ -1,0 +1,42 @@
+html,body {
+	height:100%;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Abel-Regular', sans-serif;
+}
+
+.success {
+	width: 100%;
+	text-align: center;
+	background-color: #008000;
+	font-size: 1.3em;
+	font-weight: bold;
+	border-radius: 15px;
+}
+
+.failed {
+	width: 100%;
+	text-align: center;
+	background-color: #FF0000;
+	font-size: 1.3em;
+	font-weight: bold;
+	border-radius: 15px;
+}
+
+nav {
+	background-color: #FFFFFF;
+	color: #000000;
+}
+
+nav ul a {
+	color: #000000;
+}
+
+.delete {
+	background-color: #FF0000;
+}
+
+.delete:hover {
+	background-color: #000000;
+}
