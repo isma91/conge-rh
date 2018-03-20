@@ -17,14 +17,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
         xhr.onload = function () {
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.response);
-                var tableUser = "";
-                tableUser = tableUser + "<tr><td>" + data.data[0].firstName + "</td>";
-                tableUser = tableUser + "<td>" + data.data[0].lastName + "</td>";
-                tableUser = tableUser + "<td>" + data.data[0].address + "</td>";
-                tableUser = tableUser + "<td>" + data.data[0].address + "</td>";
-                tableUser = tableUser + "<td>" + data.data[0].acquis + "</td>";
-                tableUser = tableUser + "<td>" + data.data[0].pris + "</td></tr>";
-                user.innerHTML = tableUser;
+                if (typeof image_array !== 'undefined' && image_array.length > 0) {
+                    var tableUser = "";
+                    tableUser = tableUser + "<tr><td>" + data.data[0].firstName + "</td>";
+                    tableUser = tableUser + "<td>" + data.data[0].lastName + "</td>";
+                    tableUser = tableUser + "<td>" + data.data[0].address + "</td>";
+                    tableUser = tableUser + "<td>" + data.data[0].address + "</td>";
+                    tableUser = tableUser + "<td>" + data.data[0].acquis + "</td>";
+                    tableUser = tableUser + "<td>" + data.data[0].pris + "</td></tr>";
+                    user.innerHTML = tableUser;
+                } else {
+                    window.location.href = 'index.php';
+                }
             } else {
                 error.innerHTML = "Une erreur est survenue lors de la demande de recuperation de l'utilisateur !!";
             }
