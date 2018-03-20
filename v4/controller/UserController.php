@@ -19,6 +19,21 @@ use model\User;
 class UserController
 {
 
+    public function sendJson($error, $data)
+    {
+        echo json_encode(array("error" => $error, "data" => $data));
+    }
+
+    public function getData() {
+        $user = new User();
+        $data = $user->getData();
+        if (!empty($data)) {
+            self::sendJson("", $data);
+        } else {
+            self::sendJson("Une erreur est survenue lors de la recuperation des utilisateur !!", "");
+        }
+    }
+
     public function add($firstname, $lastname, $address) {
         $errField = array();
         $firstname = $_POST["firstname"];
