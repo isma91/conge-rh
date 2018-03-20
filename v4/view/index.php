@@ -1,9 +1,3 @@
-<?php
-require_once("../autoload.php");
-use model\User;
-$user = new User();
-$data = $user->getData();
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +8,7 @@ $data = $user->getData();
     <link media="all" type="text/css" rel="stylesheet" href="../media/css/materialize.min.css" />
     <link media="all" type="text/css" rel="stylesheet" href="../media/css/google_material_icons.css" />
     <link media="all" type="text/css" rel="stylesheet" href="../media/css/style.css" />
+    <script src="../media/js/index.js"></script>
 </head>
 <body>
 <div class="container">
@@ -31,6 +26,7 @@ $data = $user->getData();
         </div>
     </nav>
 </div>
+<div class="failed"><p id="error"></p></div>
 <div class="container">
     <table class="highlight centered">
         <thead>
@@ -42,27 +38,10 @@ $data = $user->getData();
                 <th>Congés acquis</th>
                 <th>Congés pris</th>
                 <th>Modifier</th>
+                <th>Supprimer</th>
             </tr>
         </thead>
-        <tbody>
-        <?php
-            foreach ($data as $array) {
-                if ($array["active"] == 1) {
-        ?>
-                <tr>
-                <td><?php echo $array["firstName"]; ?></td>
-                <td><?php echo $array["lastName"]; ?></td>
-                <td><?php echo $array["address"]; ?></td>
-                <td><?php echo $array["dateBegin"]; ?></td>
-                <td><?php echo $array["acquis"]; ?></td>
-                <td><?php echo $array["pris"]; ?></td>
-                <td><?php if ($array["newcomer"] == 0) { ?><a href="conge.php?id=<?php echo $array['id']; ?>">Modifier</a> <?php } ?></td>
-                </tr>
-        <?php
-                }
-            }
-        ?>
-        </tbody>
+        <tbody id="users"></tbody>
     </table>
 </div>
 </body>
