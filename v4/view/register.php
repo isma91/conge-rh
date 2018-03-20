@@ -1,16 +1,3 @@
-<?php
-require_once("../autoload.php");
-use controller\UserController;
-if (isset($_POST["createUser"])) {
-    $user = new UserController();
-    $add = $user->add($_POST['firstname'], $_POST["lastname"], $_POST["address"]);
-    if ($add["error"] !== "") {
-        $message = '<div class="failed"><p>' . $add["error"] . '</p></div>';
-    } else {
-        $message = '<div class="success"><p>Utilisateur ajouté avec succès !!</p></div>';
-    }
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +16,8 @@ if (isset($_POST["createUser"])) {
         <h1>Welcome to Congé RH !!</h1>
     </div>
 </div>
+<div class="failed" id="error"></div>
+<div class="success" id="success"></div>
 <div class="container">
     <nav>
         <div class="nav-wrapper">
@@ -41,14 +30,13 @@ if (isset($_POST["createUser"])) {
 </div>
 <div class="failed" id="error"></div>
 <div class="success" id="success"></div>
-<?php if (isset($message)) { echo $message; } ?>
 <div class="container">
-    <form action="#" method="POST" class="row">
+    <form method="POST" class="row">
         <div class="row">
             <div class="col s12">
             Firstname:
                 <div class="input-field inline">
-                    <input name="firstname" type="text">
+                    <input name="firstname" type="text" id="firstname">
                 </div>
             </div>
         </div>
@@ -56,7 +44,7 @@ if (isset($_POST["createUser"])) {
             <div class="col s12">
             Lastname:
                 <div class="input-field inline">
-                    <input name="lastname" type="text">
+                    <input name="lastname" type="text" id="lastname">
                 </div>
             </div>
         </div>
@@ -64,12 +52,12 @@ if (isset($_POST["createUser"])) {
             <div class="col s12">
             Address:
                 <div class="input-field inline">
-                    <input name="address" type="text">
+                    <input name="address" type="text" id="address">
                 </div>
             </div>
         </div>
         <div class="row center">
-            <button class="btn waves-effect waves-light" name="createUser" type="submit">Create User</button>
+            <button class="btn waves-effect waves-light" name="createUser" id="createUser">Create User</button>
         </div>
     </form>
 </div>
