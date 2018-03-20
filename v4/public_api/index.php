@@ -19,4 +19,13 @@ switch ($_POST["action"]) {
     case 'getData':
     $data = $user->getData();
     break;
+    case 'getAllById':
+    $data = $user->getAllById($_POST["id"]);
+    break;
+    case 'updateAcquis':
+    $data = $user->updateAcquis($_POST["acquis"], $_POST["id"]);
+    break;
+    case 'updatePris':
+    $data = $user->updatePris($_POST["pris"], $_POST["id"]);
+    break;
 }
