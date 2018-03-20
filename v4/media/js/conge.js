@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 }
                 getData(id);
             } else {
-                error.innerHTML = "Une erreur est survenue lors du changement du00 conge pris !!";
+                error.innerHTML = "Une erreur est survenue lors du changement du conge pris !!";
             }
         }
     })
