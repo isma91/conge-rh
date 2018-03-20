@@ -32,3 +32,11 @@ nav {
 nav ul a {
 	color: #000000;
 }
+
+.delete {
+	background-color: #FF0000;
+}
+
+.delete:hover {
+	background-color: #000000;
+}
