@@ -94,5 +94,13 @@ class UserController
         }
     }
 
-
+    public function deleteUser($id) {
+        $user = new User();
+        $data = $user->delete($id);
+        if (!empty($data)) {
+            self::sendJson("", "");
+        } else {
+            self::sendJson("Une erreur est survenue lors de la suppression de l'utilisateur !!", "");
+        }
+    }
 }
