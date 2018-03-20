@@ -29,6 +29,17 @@
 <div class="failed" id="error"></div>
 <div class="success" id="success"></div>
 <div class="container">
+    <div class="row">
+        <p>Afficher les utilisateurs supprimer</p>
+        <div class="switch">
+            <label>
+            Off
+                <input type="checkbox" id="switch" name="switch">
+                <span class="lever"></span>
+            On
+            </label>
+        </div>
+    </div>
     <table class="highlight centered">
         <thead>
             <tr>
