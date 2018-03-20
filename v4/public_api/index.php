@@ -31,4 +31,7 @@ switch ($_POST["action"]) {
     case 'createUser':
     $data = $user->createUser($_POST["firstname"], $_POST["lastname"], $_POST["address"]);
     break;
+    case 'deleteUser':
+    $data = $user->deleteUser($_POST["id"]);
+    break;
 }
