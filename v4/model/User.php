@@ -87,4 +87,16 @@ Class User
         }
     }
 
+    public function delete($id) {
+        $bdd = new Bdd();
+        $id = (int)$id;
+        if (!is_int($id)) {
+            return false;
+        }
+        $update = $bdd->getBdd()->prepare("UPDATE salaries SET active = 0 WHERE id = :id");
+        $update->bindParam(":id", $id);
+        $update->execute();
+        return $update;
+    }
+
 }
