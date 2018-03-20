@@ -64,11 +64,8 @@ class UserController
         }
     }
 
-    public function add($firstname, $lastname, $address) {
+    public function createUser($firstname, $lastname, $address) {
         $errField = array();
-        $firstname = $_POST["firstname"];
-        $lastname = $_POST["lastname"];
-        $address = $_POST["address"];
         $allField = [
             'firstname' => $firstname,
             'lastname' => $lastname,
@@ -85,14 +82,14 @@ class UserController
                 $fields = $fields . ", " . $value;
             }
             $fields = substr($fields, 2);
-            return array('error' => "These fields are empty: " . $fields . " !!", "success" => "");
+            self::sendJson("These fields are empty: " . $fields . " !!", "");
         } else {
             $user = new User();
             $add = $user->add($firstname, $lastname, $address);
             if ($add) {
-                return array("error" => "", "success" => "");
+                self::sendJson("", "");
             } else {
-                return array("error" => 'There is a problem when we try to add the new user in the database !!', 'success' => '');
+                self::sendJson('There is a problem when we try to add the new user in the database !!', '');
             }
         }
     }
